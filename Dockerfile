@@ -1,3 +1,5 @@
-FROM tomcat:10.1-jre11
-COPY target/sb_docker_app.war /usr/local/tomcat/webapps/My-Docker-WebApp.war
+FROM openjdk:11
+COPY target/sb_docker_app.war user/app/
+WORKDIR /user/app
 EXPOSE 8080
+ENTRYPOINT ["java","-war","sb_docker_app.war"]
